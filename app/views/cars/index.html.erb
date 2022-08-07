@@ -1,0 +1,38 @@
+                                   <%# View all cars page %>
+
+<!-- Home section -->
+<p style="color: green"><%= notice %></p>
+<section class="home" id="home">
+  <div class="swiper-container home-slider">
+    <div class="swiper-wrapper wrapper">
+      <div class="swiper-slide slide">
+          <div class="content">
+              <h3>كيفية الاستخدام</h3>
+              <p>آدرج سيارتك مجاناً في آول منصة مرخصة لمشاركة السيارات <br> من شخص لشخص في المملكة العربيه السعودية</p>
+          </div>
+          <div class="image">
+              <img src="Images/carw3.jpeg" alt="">
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cars section -->
+<section class=car-list>
+<div class="tital"> 
+    <h2>قائمة السيارات</h2>
+</div>
+
+<%# Call to the car page %>
+<div class="pro-cotainer">
+  <% @cars.each do |car| %>    
+    <%= render car %>
+  <% end %>
+</div>
+</section>
+
+<div class="btn">
+<%# Go to the new page to add new cars %>
+<%= link_to "أضف سيارة جديدة", new_car_path %>
+</div>

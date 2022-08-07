@@ -1,0 +1,70 @@
+                                        <%# car booking page %>
+
+<%= form_with id: "myForm" do |form| %>
+    <!-- BOOKING FORM -->
+        <h2>Reserve your car now </h2>
+
+        <!-- Input list when registering -->
+        <label for="name">Name</label>
+        <%= form.text_field :name ,name:"name" ,:required => true%>
+    
+        <label for="email">Email</label>
+        <%= form.text_field :email ,name:"email" ,:required => true %>
+    
+        <label for="checkin-date">Check-in Date</label>
+        <%= form.date_field :available_from ,  min: @car.available_from , max: @car.available_until ,id:"checkin-date", name:"checkin" ,:required => true %>
+        
+        <label for="checkout-date">Check-out Date</label>
+        <%= form.date_field :available_until , max: @car.available_until ,id:"checkout-date" , name:"checkout" ,:required => true%>
+
+        <%= button_to "Go!", thanks_cars_path ,:action => "click", id:"bookGo", onclick: "valueSender()" , class:"btn" %>
+<% end %>
+
+
+<!-- Javascript -->
+<script>
+    window.addEventListener('load', () => { // Here we read all the indexes of cars and know them
+        const params = (new URL(document.location)).searchParams;
+    })
+
+    // Here we enter the starting and ending number to book each car
+    var checkinElem = document.querySelector("#checkin-date");
+    var checkoutElem = document.querySelector("#checkout-date");
+
+        checkinElem.onchange = function () {
+            // Here it saves the start date that the person chooses and saves it in checkoutElem
+            checkoutElem.setAttribute("min", this.value); 
+
+            document.getElementById("bookGo").disabled = false;
+        }
+
+        // -------------------------------------
+
+    function valueSender() {
+        let Name = document.forms["myForm"]["name"].value;
+        let Emil = document.forms["myForm"]["email"].value;
+        let In = document.forms["myForm"]["checkin"].value;
+        let Out = document.forms["myForm"]["checkout"].value;
+
+        // Error message when leaving any space empty
+        if (Name == "") {
+            alert("Name must be filled out");
+            return false;
+        } if (Emil == "") {
+            alert("Emil must be filled out");
+            return false;
+        } if (In == "") {
+            alert("checkin must be filled out");
+            return false;
+        } if (Out == "") {
+            alert("checkout must be filled out");
+            return false;
+        }
+
+        // Here below, a thank you message appears upon completion of the reservation
+        var a = 0;
+        localStorage.setItem("myValue", a)
+        window.location.href = "/cars/thanks";     // Here you go to the thank you page when you're done
+        document.getElementById("bookGo").disabled = true;
+    }
+</script>

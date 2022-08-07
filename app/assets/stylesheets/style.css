@@ -1,0 +1,585 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@700&family=Tajawal:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------------------------------------ */
+/* all basics */
+html{
+    /* احدد حجم ثابت بحيث rem يضرب في ١٠ ويعطي الحجم اللي اباه */
+    font-size: 10px;
+}
+
+body{
+    font-family: 'Tajawal', sans-serif;
+    background: rgb(255, 255, 255);
+}
+
+h1{
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    padding-top: 10px;
+    color: white;
+}
+
+
+h3{ 
+    font-size: 2rem;
+    line-height: 1.8; /* الارتفاع */
+    margin-bottom: 2rem;
+    color: rgb(255, 255, 255);
+}
+
+h2{ 
+    font-size: 4rem;
+    line-height: 1.8; /* الارتفاع */
+    margin-bottom: 2rem;
+    color: black;
+    text-align: center;
+}
+
+
+p{
+    font-size: 1.6rem;
+    color: rgb(0, 0, 0);
+    line-height: 2; /* الارتفاع */
+}
+
+/* ------------------------------------------------ */
+/* nav section */
+.nav-container {
+    background: rgb(194, 0, 0);
+    color: black;
+}
+
+nav{
+    width: 90%; /* يزحف تقريبا ٩٠ بالميه */
+    margin: 0 auto;
+    max-width: 1366px; /* القوائم تاخد مساحات ثابته ماتتغير حتى لو صغرت الشاشه */
+    display: flex; /* كل قائمه تكون لحال */
+    justify-content: space-between; /* يوزع المحتويات على الطرفين */ 
+    align-items: center;  /* يوزع القوائم في النص */
+    min-height: 10vh;
+    font-size: 16px;
+}
+
+.logo{
+    width: 20rem;
+}
+
+nav ul{
+    display: flex; /* كل قائمه تكون لحال */
+    list-style-type: none; /* يشيل النقاط */
+    justify-content: space-between; 
+}
+
+nav ul li a{
+    display: block;
+    color: aliceblue;
+    text-decoration: none; /* نشيل الخط اللي تحت العناويين فوق */
+    padding-left: 4rem;
+} 
+
+nav ul li a:hover{
+    color: rgb(160, 160, 160);
+} 
+
+/* ------------------------------------------------ */
+/* hero section */
+.hero {
+    height: 90vh; /* تاخد ٩٠ بالميه من الشاشه ، ١٠ بالميه للناف اللي فوق */
+    position: relative;
+}
+
+/* الخلفيه والصوره */
+.hero::after{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: heroAni 5s ease-in;
+    background-image: linear-gradient(90deg, 
+    rgba(104, 51, 51, 0.2) 0% , rgba(92, 20, 20, 0.8) 20%
+    ) , 
+    url(car2.jpeg) ;
+    background-size: cover;
+}
+ /* الكلام اللي فوق الخلفيه */
+.content {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1366px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 90vh;
+}
+
+h1 span , h3 span {
+    color: rgb(215, 2, 2);
+}
+
+
+/* ------------------------------------------------ */
+/* qualites section */
+.qualites{
+    width: 90%;
+    margin: 4rem auto;
+    max-width: 1366px;
+    height: 100%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.quality-container{
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 2rem;
+    padding-top: 5rem;
+}
+
+.quality{
+    background: white;
+    border-radius: 3rem;
+    padding: 4rem 0;
+    width: 30%;
+    box-shadow: 0 5px 25px rgba(1, 1, 1, 0.15);
+    transition: 0.7s ease;
+}
+
+.quality:hover{
+    transform: scale(1.1);
+}
+
+.quality p{
+    text-align: center;
+    width: 70%;
+    margin: 2rem auto;
+}
+
+.quality h3{
+    color: rgb(187, 8, 8);
+    font-size: 2.2;
+}
+
+.qualites h2{
+    font-size: 3rem;
+    color: black;
+}
+
+.header-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-container i{
+    font-size: 1.8rem;
+    margin-left: 1rem;
+    color: rgb(0, 0, 0);
+}
+
+/* ------------------------------------------------ */
+/* About section */
+.about-container{
+    background: rgb(166, 1, 1);
+}
+
+.about-us{
+    width: 90%;
+    max-width: 1366px;
+    margin: 0 auto;
+    height: 50vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-content h2{
+    color: white;
+    font-size: 3rem;
+}
+
+.about-content p{
+    margin-top: 1rem;
+    color: white;
+    width: 80%;
+}
+
+.about-us .image_tag{
+    width: 80%;
+    height: 100%;
+}
+
+/* ------------------------------------------------ */
+/* contact us section */
+.cards-contact h2{
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.content-cards{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 10rem;
+}
+
+.card{
+    background-color: white;
+    width: 20%;
+    box-shadow: 0 5px 25px rgba(1, 1, 1, 0.15);
+    border-radius: 3rem;
+    padding: 25px;
+    margin: 15px;
+    transition: 0.7s ease;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.icon {
+    color: rgb(166, 1, 1);
+    font-size: 6em;
+    text-align: center;
+}
+
+.info {
+    text-align: center;
+}
+
+.info h3{
+    color: black;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 10px;
+    font-size: large;
+}
+
+.info p{
+    font-size: large;
+}
+
+
+/* ------------------------------------------------ */
+/* About section */
+@keyframes heroAni {
+    from{
+        scale:1.2;
+    } 
+    to {
+        scale: 1;
+    }
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* cars.html */
+
+section{
+    padding:2rem 9%;
+}
+
+section:nth-child(even){
+    background:rgb(255, 255, 255);
+}
+
+.home .home-slider .slide{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:2rem; 
+    padding-top: 9rem;
+}
+
+.home .home-slider .slide .image{
+    flex:1 1 45rem;
+}
+
+.home .home-slider .slide .image .image_tag{
+    size: 80px;
+    width: 100%;
+}
+
+.home .home-slider .slide .content h3{
+    color: black;
+    font-size: 7rem;
+}
+
+.home .home-slider .slide .content p{
+    color: rgb(198, 0, 0);
+    font-size: 2rem;
+    padding:.5rem 0;
+    line-height: 1.5;
+}
+
+.swiper-pagination-bullet-active{
+    background: var(--red-rjaro);
+}
+
+ .title-list h2{
+    text-align: center;
+}
+
+.pro-cotainer{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+
+ .pro{
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    position: relative;
+}
+
+
+.img{
+    width: 100%;
+    border-radius: 20px;
+    height: 15rem;
+ }
+
+ .pro:hover{
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+ .pro .title{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.pro .description{
+    padding: 0 20px 20px 20px;
+    line-height: 22px;
+    text-align: left;
+    font-weight: bold;
+ }
+
+.product{
+    display: flex;
+    margin-top: 20px;
+    background: #fff;
+    border:.1rem solid rgba(0,0,0,.2);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);  
+    width: 100%;  
+}
+
+.product .image_tag{
+    height: 100%;
+    width: 100%;
+    padding:.5rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2rem;
+}
+ 
+.single-pro-img {
+    width: 40%;
+    margin-right: 50px;
+}
+
+.single-pro-img .smallImg{
+    height: 100%;
+    width: 100%;
+    padding:.5rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2rem;
+}
+
+.single-pro-img #MainImg{
+    height: 40rem;
+    width: 100%;
+    padding:.5rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2rem;
+}
+
+.single-pro-group{
+    height: 10rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.single-pro-col{
+    display: flex;
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+
+.single-pro-details{
+    width: 50%;
+    padding-top: 30px;
+}
+
+.single-pro-details .title{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.single-pro-details .description{
+    padding: 0 20px 20px 20px;
+    line-height: 22px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btnToCarDetails{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+ .btn{
+    display: inline-block;
+    font-size: 1.7rem;
+    color:#fff;
+    background: rgb(194, 0, 0);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding:.8rem 3rem;
+    border: none;
+}
+
+.btn{
+    font-size: 1.7rem;
+    color:#fff;
+    background: rgb(194, 0, 0);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding:.8rem 3rem;
+    border: none;
+    justify-content: center;
+}
+
+.bot a{
+    color: rgb(194, 0, 0);
+    font-size: 1.6rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background: rgb(160, 160, 160);
+    letter-spacing: .1rem;
+}
+
+.btn a{
+    color: rgb(255, 255, 255);
+    font-size: 1.6rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:active{ 
+    transform: scale(0.98);
+}
+
+ .view-more{
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 20px;
+    text-align: center;
+ }
+ .view-more button{
+    padding: 10px 25px;
+ }
+
+
+
+/* booking ------------------------------------------------------------------------------------------------- */
+form  {
+    width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+  
+  label {
+    display: block;
+    font-family: 'Nanum Gothic';
+    padding-bottom: 10px;
+    font-size: 2.5em;
+    text-align: left;
+  }
+  
+  input, select, textarea {
+    border-radius: 2px;
+    border: 2px solid #777;
+    box-sizing: border-box;
+    font-size: 1.25em;
+    font-family: 'Nanum Gothic';
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  div.elem-group.inlined input {
+    width: 95%;
+    display: inline-block;
+  }
+  
+  textarea {
+    height: 250px;
+  }
+  
+  hr {
+    border: 1px dotted #ccc;
+    justify-content: space-between;
+  }
+
+  .box {
+    margin-top: 10rem;
+    font-size: 20px;
+    align-items: center;
+}
+
+
+  .thank {
+    text-align: center;
+    font-size: 2rem;
+  }
+

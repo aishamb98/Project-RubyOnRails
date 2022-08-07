@@ -1,0 +1,53 @@
+                                <%# All cars page %>
+
+<%# Here is a code from the internet for the distance law %>
+<% lat2 = 21.713637%>
+<% lon2 = 39.101741%>
+<% lat1 = car.latitude%>
+<% lon1 = car.longitude%>
+<% if ((lat1 == lat2) && (lon1 == lon2))%> 
+    <%dist = 0%>
+<% else %> 
+    <%radlat1 = Math::PI * lat1 / 180%>
+    <%radlat2 = Math::PI * lat2 / 180%>
+    <%theta = lon1 - lon2%>
+    <%radtheta = Math::PI * theta / 180%>
+    <%dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta)%>
+    <%if (dist > 1)%> 
+      <%dist = 1%>
+    <% end %>
+    <%dist = Math.acos(dist)%>
+    <%dist = dist * 180 / Math::PI%>
+    <%dist = dist * 60 * 1.1515%>
+    <%dist = dist * 1.609344%>
+<%end%>
+
+<%# ----------------------------------------------- %>
+
+<%# Below you can remove the comment to appear if statement to limit cars to 50Km %>
+<%# <% if dist<= 50%> 
+<div class="pro">
+    <%# Here you will only call the first image and make it as the main image %>
+    <%= image_tag car.car_image[0] ,class:"img" %>
+    <%# Here below we have named the main address, car name and model and all data %>
+    <p class="title">
+    <%= car.make %>
+    <%= car.model %>
+    </p>
+    <p class="description">
+    <strong>Km:</strong>
+    <%= car.km %>
+    </p>
+    <p class="description">
+    <strong> Distance: </strong>
+    <%# Call the decimal function to shorten the number after the comma %>
+    <%= '%.2f' %dist %> 
+    </p>
+    <p class="bot">
+      <%# Go to car detail page %>
+      <%= link_to "تفاصيل السيارة", car %>
+    </p>
+
+</div>
+<%# <%end%> 
+

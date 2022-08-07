@@ -1,0 +1,93 @@
+                        <%# car detail page %>
+
+<%# Here is a code from the internet for the distance law %>
+<% lat2 = 21.713637%>
+<% lon2 = 39.101741%>
+<% lat1 = @car.latitude%>
+<% lon1 = @car.longitude%>
+<% if ((lat1 == lat2) && (lon1 == lon2))%> 
+    <%dist = 0%>
+<% else %> 
+    <%radlat1 = Math::PI * lat1 / 180%>
+    <%radlat2 = Math::PI * lat2 / 180%>
+    <%theta = lon1 - lon2%>
+    <%radtheta = Math::PI * theta / 180%>
+    <%dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta)%>
+    <%if (dist > 1)%> 
+      <%dist = 1%>
+    <% end %>
+    <%dist = Math.acos(dist)%>
+    <%dist = dist * 180 / Math::PI%>
+    <%dist = dist * 60 * 1.1515%>
+    <%dist = dist * 1.609344%>
+<%end%>
+
+<%# ------------------------------------------------------- %>
+
+<h2>تفاصيل السيارة</h2>
+<p style="color: green"><%= notice %></p>
+<h2></h2>
+<div class="product">
+    <div class="single-pro-img">
+          <%=  image_tag  @car.car_image[0], id: "MainImg" %>
+        <div class="single-pro-group">
+          <% @car.car_image.each do |car_images| %>
+            <div class="single-pro-col">
+                <%= image_tag car_images ,  onclick: "clickSmall()" ,class: "smallImg"%>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  <div class="single-pro-details">
+    <p class="title">
+      <%= @car.make %>
+      <%= @car.model %>
+    </p>
+    <p class="description">
+      <strong>Km:</strong>
+      <%= @car.km %>
+    </p>
+    <p class="description">
+      <strong> Distance: </strong>
+      <%= '%.2f' %dist %>
+    </p>
+
+    <p class="description">
+      <strong>Description:</strong>
+      <%= @car.description %>
+    </p>
+
+    <p class="description">
+      <strong>Color:</strong>
+      <%= @car.color %>
+    </p>
+
+    <p class="bot" > 
+      <%= link_to "الرجوع الى صفحة السيارات", cars_path, class: "dot" %>
+    </p>
+      <%= link_to "Book Now", booking_car_path , class: "btn"%>
+  </div>
+</div>
+
+    
+<!-- Javascript -->
+<script >
+window.addEventListener('load', () => { // Here we read all the indexes of cars and know them
+    const params = (new URL(document.location)).searchParams;
+})
+
+function clickSmall(){ // At first, you have to double click on the first image to show it
+    console.log("asd")
+let col = document.getElementsByClassName("smallImg"); // It calls small pictures
+
+    for(var i=0 ; i < col.length; i++){ // Here it calculates the index for all its images and shows them
+        col[i].addEventListener('click', function(){
+
+            this.classList.add('smallImg')
+            document.getElementById('MainImg').src = this.src
+        })
+    }
+}
+</script>
+
+

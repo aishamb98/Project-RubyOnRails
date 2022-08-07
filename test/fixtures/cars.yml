@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  make: MyString
+  model: MyString
+  km: 1.5
+  latitude: 1.5
+  longitude: 1.5
+  description: MyString
+  color: MyString
+  available_from: 2022-08-03
+  available_until: 2022-08-03
+  name: MyString
+  email: MyString
+
+two:
+  make: MyString
+  model: MyString
+  km: 1.5
+  latitude: 1.5
+  longitude: 1.5
+  description: MyString
+  color: MyString
+  available_from: 2022-08-03
+  available_until: 2022-08-03
+  name: MyString
+  email: MyString
